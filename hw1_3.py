@@ -1,75 +1,73 @@
 '''
-Homework 2, 1 and 2 part
+Homework 3, part 1 and 2
 '''
-
 
 # Part 1
 
-from abc import ABC, abstractmethod
+class Car:
+    def __init__(self, color: str, fuel: str, currency: str):
+        self.color = color
+        self.fuel = fuel
+        self.company = 'Astana Motors'
+        self.currency = currency
+        self.price = 20000000
 
-class Shape:
-    @abstractmethod
-    def area(self):
-        pass
-    @abstractmethod
-    def perimeter(self):
-        pass
+        print('Car is created')
+
+    def go(self, speed: int = 100):
+        print('Car is driving with speed: ',speed)
+        self.info()
+
+    def stop(self):
+        print('Car is stopped')
+
+    def beep(self):
+        print('Beeeeeeep')
+
+    def info(self):
+        print(f'Color of the car {self.color} and using a {self.fuel}')
+
+    @property # Using it in a big logic and allows to address as a variable
+    def converted_price(self):
+        if self.currency == 'USD':
+            return self.price // 487
+        elif self.currency == 'EUR':
+            return self.price // 550
+        elif self.currency == 'GBP':
+            return self.price // 635
+        elif self.currency == 'CNY':
+            return self.price // 68
+        else:
+            return self.price
 
 
-class Rectangle(Shape):
-    def __init__(self, width, length): # Changed height to length
-        self.width = width
-        self.length = length
-
-    def area(self):
-        print(f'Area of rectangle: {self.width * self.length}')
-
-    def perimeter(self):
-        print(f'Perimeter of rectangle: {(self.width + self.length) * 2}')
+mercedes = Car('White', 'Gas', 'GBP')
+bmw = Car('Black', 'Petrol', 'CNY')
+mercedes.go(30)
+mercedes.go(60)
 
 
-rectangle = Rectangle(2, 3)
-rectangle.area()
-
-rectangle.perimeter()
-
+print(mercedes.converted_price)
+print(bmw.converted_price)
 
 
 
 # Part 2
 
-class Appliance:
-    @abstractmethod
-    def turn_on(self):
-        pass
+class Product:
+    def __init__(self, price, discount):
+        self.price = price
+        self.discount = discount
 
-    @abstractmethod
-    def turn_off(self):
-        pass
-
-
-class WashingMachine(Appliance):
-    def turn_on(self):
-        print('Washing Machine is turned on')
-
-    def turn_off(self):
-        print('Washing Machine is turned off')
+    @property
+    def final_price(self):
+        print(f'Price of the Product with discount: {self.price * (1 - self.discount / 100)}')
 
 
-class Refrigerator(Appliance):
-    def turn_on(self):
-        print('Refrigerator is turned on')
+product1 = Product(1000, 20)
+product2 = Product(3992, 35)
+product3 = Product(15000, 23)
 
-    def turn_off(self):
-        print('Refrigerator is turned off')
-
-
-washing_machine = WashingMachine()
-refrigerator = Refrigerator()
-
-washing_machine.turn_on()
-washing_machine.turn_off()
-
-refrigerator.turn_on()
-refrigerator.turn_off()
-
+product1.final_price
+product2.final_price
+product3.final_price

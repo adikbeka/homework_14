@@ -1,29 +1,75 @@
 '''
-Homework 1.2
+Homework 2, 1 and 2 part
 '''
 
-class Vehicle:
-    def __init__(self, speed):
-        self.speed = speed
 
-    def move(self):
-        print(f'Vehicle is started moving')
+# Part 1
 
-class Car(Vehicle):
-    def move(self):
-        print(f'Car is started moving with {self.speed} km/h')
+from abc import ABC, abstractmethod
 
-
-class Bicycle(Vehicle):
-    def move(self):
-        print(f'Bicycle is started moving with {self.speed} km/h')
+class Shape:
+    @abstractmethod
+    def area(self):
+        pass
+    @abstractmethod
+    def perimeter(self):
+        pass
 
 
-car = Car(100)
-bicycle = Bicycle(15)
+class Rectangle(Shape):
+    def __init__(self, width, length): # Changed height to length
+        self.width = width
+        self.length = length
 
-car.move()
-bicycle.move()
+    def area(self):
+        print(f'Area of rectangle: {self.width * self.length}')
+
+    def perimeter(self):
+        print(f'Perimeter of rectangle: {(self.width + self.length) * 2}')
 
 
+rectangle = Rectangle(2, 3)
+rectangle.area()
+
+rectangle.perimeter()
+
+
+
+
+# Part 2
+
+class Appliance:
+    @abstractmethod
+    def turn_on(self):
+        pass
+
+    @abstractmethod
+    def turn_off(self):
+        pass
+
+
+class WashingMachine(Appliance):
+    def turn_on(self):
+        print('Washing Machine is turned on')
+
+    def turn_off(self):
+        print('Washing Machine is turned off')
+
+
+class Refrigerator(Appliance):
+    def turn_on(self):
+        print('Refrigerator is turned on')
+
+    def turn_off(self):
+        print('Refrigerator is turned off')
+
+
+washing_machine = WashingMachine()
+refrigerator = Refrigerator()
+
+washing_machine.turn_on()
+washing_machine.turn_off()
+
+refrigerator.turn_on()
+refrigerator.turn_off()
 
