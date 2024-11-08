@@ -2,22 +2,23 @@
 Homework 2, 1 and 2 part
 '''
 
-
 # Part 1
 
 from abc import ABC, abstractmethod
 
-class Shape:
+
+class Shape(ABC):
     @abstractmethod
     def area(self):
         pass
+
     @abstractmethod
     def perimeter(self):
         pass
 
 
 class Rectangle(Shape):
-    def __init__(self, width, length): # Changed height to length
+    def __init__(self, width, length):  # Changed height to length
         self.width = width
         self.length = length
 
@@ -32,8 +33,6 @@ rectangle = Rectangle(2, 3)
 rectangle.area()
 
 rectangle.perimeter()
-
-
 
 
 # Part 2
@@ -72,4 +71,3 @@ washing_machine.turn_off()
 
 refrigerator.turn_on()
 refrigerator.turn_off()
-
